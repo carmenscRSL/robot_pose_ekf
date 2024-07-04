@@ -41,6 +41,7 @@ catkin_package(
         roscpp
         sensor_msgs
         std_msgs
+        geometry_msgs
 )
 
 include_directories(
@@ -64,6 +65,12 @@ install(
     TARGETS
         robot_pose_ekf
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+add_executable(${PROJECT_NAME}_odom_filter_node src/odom_filter.cpp)
+
+target_link_libraries(${PROJECT_NAME}_odom_filter_node
+  ${catkin_LIBRARIES}
 )
 
 install(
